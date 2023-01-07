@@ -117,5 +117,5 @@ jobs:
       - name: Save build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: build
+          name: $RUNNER_OS
           path: build
