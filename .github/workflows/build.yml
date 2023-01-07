@@ -108,7 +108,7 @@ jobs:
           mkdir build
           cd build
           cmake ..
-          cmake --build .
+          cmake --build . --config Release
 
       - name: Show debug info
         if: matrix.os != 'windows-latest'
