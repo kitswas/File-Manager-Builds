@@ -101,9 +101,21 @@ jobs:
           host: linux
           target: desktop
 
-      - name: cmake build
+      - name: Cmake build
         run: |
           mkdir build
           cd build
           cmake ..
           cmake --build .
+
+      - name: Show debug info
+        run: |
+          pwd
+          ls -la
+          ls -la build
+
+      - name: Save build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
