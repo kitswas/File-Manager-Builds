@@ -111,7 +111,7 @@ jobs:
       - name: Windows deployment
         if: matrix.os == 'windows-latest'
         run: |
-          cd ./build/Release
+          cd ./Release
           windeployqt File-Manager.exe
           
       - name: MacOS deployment
