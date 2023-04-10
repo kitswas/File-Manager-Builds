@@ -106,7 +106,6 @@ jobs:
           cd build
           cmake ..
           cmake --build . --config Release
-          cd build
           
       - name: Windows deployment
         if: matrix.os == 'windows-latest'
