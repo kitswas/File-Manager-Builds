@@ -107,6 +107,13 @@ jobs:
           cmake ..
           cmake --build . --config Release
           
+      - name: Show debug info
+        if: matrix.os != 'windows-latest'
+        run: |
+          pwd
+          ls -la
+          ls -la ..
+          
       - name: Windows deployment
         if: matrix.os == 'windows-latest'
         run: |
@@ -116,15 +123,9 @@ jobs:
       - name: MacOS deployment
         if: matrix.os == 'macOS-latest'
         run: |
+          cd build
           macdeployqt File-Manager.app -verbose=2
           cd File-Manager.app
-
-      - name: Show debug info
-        if: matrix.os != 'windows-latest'
-        run: |
-          pwd
-          ls -la
-          ls -la build
 
       - name: Save build artifacts
         uses: actions/upload-artifact@v3
