@@ -105,14 +105,20 @@ jobs:
           mkdir build
           cd build
           cmake ..
-          cmake --build . --config Release
+          cmake --build . --config Release'
+          cd build
           
       - name: Windows deployment
         if: matrix.os == 'windows-latest'
         run: |
           cd ./build/Release
           windeployqt File-Manager.exe
-          cd ..
+          
+      - name: MacOS deployment
+        if: matrix.os == 'macOS-latest'
+        run: |
+          macdeployqt File-Manager.app -verbose=2
+          cd File-Manager.app
 
       - name: Show debug info
         if: matrix.os != 'windows-latest'
@@ -125,4 +131,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.os }}
-          path: build
+          path: .
