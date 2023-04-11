@@ -127,8 +127,23 @@ jobs:
           macdeployqt File-Manager.app -verbose=2
           cd File-Manager.app
 
-      - name: Save build artifacts
+      - name: Save build artifacts Windows
+        if:  matrix.os == 'windows-latest'
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.os }}
-          path: .
+          name: "File-Manager-Windows"
+          path: ./build/Release
+
+      - name: Save build artifacts MacOS
+        if:  matrix.os == 'macOS-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: "File-Manager-MacOS"
+          path: ./build/File-Manager.app
+
+      - name: Save build artifacts Linux
+        if:  matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: "File-Manager-Linux"
+          path: ./build
