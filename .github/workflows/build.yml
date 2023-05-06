@@ -138,7 +138,7 @@ jobs:
         if:  matrix.os == 'macOS-latest'
         uses: actions/upload-artifact@v3
         with:
-          name: "File-Manager-MacOS"
+          name: "File-Manager-MacOS.app"
           path: ./build/File-Manager.app
 
       - name: Save build artifacts Linux
