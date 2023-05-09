@@ -126,7 +126,7 @@ jobs:
         run: |
           mkdir deploy
           cd deploy
-          cp ./build/File-Manager .
+          cp ../build/File-Manager .
           cp $Qt6_DIR/lib/*.so .
           curl -0 https://gist.githubusercontent.com/kitswas/ff3df48dd9e4e5984764e524d86b4824/raw/a4c96745430c6525220ba40f475cf8245018d2f3/Qt_Linux_Deployment.sh
           
