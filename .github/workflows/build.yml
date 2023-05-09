@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
         matrix:
-            os: [ubuntu-latest, windows-latest, macOS-latest]
+            os: [windows-latest, macOS-latest]
 
     steps:
       - uses: actions/checkout@v3
@@ -121,17 +121,6 @@ jobs:
           cd ./build/Release
           windeployqt File-Manager.exe
           
-      - name: Linux deployment
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          mkdir deploy
-          cd deploy
-          cp ../build/File-Manager .
-          cp $Qt6_DIR/lib/*.so.* .
-          curl -o File-Manager.sh https://gist.githubusercontent.com/kitswas/ff3df48dd9e4e5984764e524d86b4824/raw/a4c96745430c6525220ba40f475cf8245018d2f3/Qt_Linux_Deployment.sh
-          sudo chmod +x File-Manager.sh
-          sudo chmod +x File-Manager
-          
       - name: MacOS deployment
         if: matrix.os == 'macOS-latest'
         run: |
@@ -152,10 +141,3 @@ jobs:
         with:
           name: "File-Manager-MacOS.app"
           path: ./build/File-Manager.app
-
-      - name: Save build artifacts Linux
-        if:  matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@v3
-        with:
-          name: "File-Manager-Linux"
-          path: ./deploy
