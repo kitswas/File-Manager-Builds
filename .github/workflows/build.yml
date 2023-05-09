@@ -123,7 +123,10 @@ jobs:
       - name: Linux deployment
         if: matrix.os == 'ubuntu-latest'
         run: |
-          cp $Qt6_DIR/lib/* ./build
+          mkdir deploy
+          cp ./build/File-Manager ./deploy
+          cp ../File-Manager.sh ./deploy
+          cp $Qt6_DIR/lib/* ./deploy
         continue-on-error: true
           
       - name: MacOS deployment
@@ -152,4 +155,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: "File-Manager-Linux"
-          path: ./build
+          path: ./deploy
