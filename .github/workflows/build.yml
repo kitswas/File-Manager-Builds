@@ -111,8 +111,8 @@ jobs:
         if: matrix.os != 'windows-latest'
         run: |
           pwd
+          ls -la build
           ls -la
-          ls -la ..
           
       - name: Windows deployment
         if: matrix.os == 'windows-latest'
