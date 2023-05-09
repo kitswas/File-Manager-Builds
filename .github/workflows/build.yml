@@ -129,6 +129,8 @@ jobs:
           cp ../build/File-Manager .
           cp $Qt6_DIR/lib/*.so .
           curl -o File-Manager.sh https://gist.githubusercontent.com/kitswas/ff3df48dd9e4e5984764e524d86b4824/raw/a4c96745430c6525220ba40f475cf8245018d2f3/Qt_Linux_Deployment.sh
+          sudo chmod +x File-Manager.sh
+          sudo chmod +x File-Manager
           
       - name: MacOS deployment
         if: matrix.os == 'macOS-latest'
