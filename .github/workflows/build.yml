@@ -125,9 +125,8 @@ jobs:
         run: |
           mkdir deploy
           cp ./build/File-Manager ./deploy
-          cp ../File-Manager.sh ./deploy
-          cp $Qt6_DIR/lib/* ./deploy
-        continue-on-error: true
+          cp ../../File-Manager.sh ./deploy
+          cp $Qt6_DIR/lib/*.so ./deploy
           
       - name: MacOS deployment
         if: matrix.os == 'macOS-latest'
