@@ -120,13 +120,18 @@ jobs:
           cd ./build/Release
           windeployqt File-Manager.exe
           
+      - name: Linux deployment
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          cp $Qt6_DIR/lib/* build
+          
       - name: MacOS deployment
         if: matrix.os == 'macOS-latest'
         run: |
           cd build
           macdeployqt File-Manager.app -verbose=2
           cd File-Manager.app
-
+          
       - name: Save build artifacts Windows
         if:  matrix.os == 'windows-latest'
         uses: actions/upload-artifact@v3
