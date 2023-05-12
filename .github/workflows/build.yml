@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
         matrix:
-            os: [windows-latest, macOS-latest]
+            os: [windows-latest, macOS-11]
 
     steps:
       - uses: actions/checkout@v3
@@ -122,11 +122,12 @@ jobs:
           windeployqt File-Manager.exe
           
       - name: MacOS deployment
-        if: matrix.os == 'macOS-latest'
+        if: matrix.os == 'macOS-11'
         run: |
           cd build
           macdeployqt File-Manager.app -verbose=2
-          cd File-Manager.app
+          mkdir MacOS
+          mv File-Manager.app MacOS
           
       - name: Save build artifacts Windows
         if:  matrix.os == 'windows-latest'
@@ -136,8 +137,8 @@ jobs:
           path: ./build/Release
 
       - name: Save build artifacts MacOS
-        if:  matrix.os == 'macOS-latest'
+        if:  matrix.os == 'macOS-11'
         uses: actions/upload-artifact@v3
         with:
           name: "File-Manager-MacOS.app"
-          path: ./build/File-Manager.app
+          path: ./build/MacOS
