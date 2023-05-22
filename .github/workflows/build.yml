@@ -126,6 +126,8 @@ jobs:
         run: |
           cd build
           macdeployqt File-Manager.app -verbose=2
+          sudo chmod +x File-Manager.app
+          sudo chmod +x File-Manager.app/Contents/MacOS/*
           mkdir MacOS
           mv File-Manager.app MacOS
           
