@@ -11,7 +11,7 @@ jobs:
             os: [windows-latest, macOS-latest]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # Repository name with owner. For example, actions/checkout
           # Default: ${{ github.repository }}
@@ -134,14 +134,14 @@ jobs:
           
       - name: Save build artifacts Windows
         if:  matrix.os == 'windows-latest'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "File-Manager-Windows"
           path: ./build/Release
 
       - name: Save build artifacts MacOS
         if:  matrix.os == 'macOS-latest'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "File-Manager-MacOS.app"
           path: ./build/MacOS
